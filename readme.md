@@ -1,3 +1,23 @@
 # CrisplyConnector
 
-A wrapper for the crisply api that will post selected activity to a given users account
+A wrapper for the [crisply](http://crisply.com) api that will post
+selected activity to a given users account.
+
+## Connect to Github
+
+You can use this to connect your account to github, via the webhooks
+functionality (under admin in your repository). Do so by pointing the
+webhook at this url: `http://serene-gorge-4899.herokuapp.com/github`
+
+### Using your Crisply timesheet
+
+The url will take the apikey and subdomain in the url.
+
+E.g. `http://serene-gorge-4899.herokuapp.com/github?apikey=SECRET&subdomain=BESTCO`
+
+### Authorship
+
+The expectation is that the name of the committer matches the name of
+one of your users. The time will then be allocated to that user.
+
+

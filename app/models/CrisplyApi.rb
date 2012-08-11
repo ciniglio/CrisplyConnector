@@ -9,7 +9,7 @@ class CrisplyApi
   attr_reader :date
   
   def date=(date)
-    @date = Time.parse(date).utc.iso8601
+    @date = Time.parse(date.to_s).utc.iso8601
   end
 
   def initialize(options)

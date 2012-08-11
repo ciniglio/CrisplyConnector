@@ -13,11 +13,11 @@ class GithubController < ApplicationController
 
     puts "Bye Logs!!"
 
-    params[:commits].each do |commit|
-      ca.author = commit[:author][:email]
-      ca.guid = commit[:id]
-      ca.text = commit[:message]
-      ca.date = commit[:timestamp]
+    params["commits"].each do |commit|
+      ca.author = commit["author"]["email"]
+      ca.guid = commit["id"]
+      ca.text = commit["message"]
+      ca.date = commit["timestamp"]
       ca.post_activity
     end
     

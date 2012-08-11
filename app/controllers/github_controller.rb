@@ -3,7 +3,11 @@ class GithubController < ApplicationController
     ca = CrisplyApi.new subdomain: params[:subdomain], 
                         apikey: params[:apikey]
 
+    puts "Hello Logs!!"
+
     puts params[:commits]
+
+    puts "Bye Logs!!"
 
     params[:commits].each do |commit|
       ca.author = commit[:author][:email]

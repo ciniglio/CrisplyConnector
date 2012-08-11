@@ -9,11 +9,13 @@ class GithubController < ApplicationController
 
     payload = JSON.parse params[:payload]
 
+    puts "Parsed Payload!!"
+
     puts payload
 
     puts "Bye Logs!!"
 
-    params["commits"].each do |commit|
+    payload["commits"].each do |commit|
       ca.author = commit["author"]["email"]
       ca.guid = commit["id"]
       ca.text = commit["message"]

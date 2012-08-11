@@ -5,7 +5,11 @@ class GithubController < ApplicationController
 
     puts "Hello Logs!!"
 
-    puts params[:commits]
+    puts params[:payload]
+
+    payload = JSON.parse params[:payload]
+
+    puts payload
 
     puts "Bye Logs!!"
 

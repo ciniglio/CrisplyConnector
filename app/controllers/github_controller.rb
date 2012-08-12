@@ -4,9 +4,6 @@ class GithubController < ApplicationController
     ca = myCA.new subdomain: params[:subdomain],
                              apikey: params[:apikey]
 
-    #ca = CrisplyApi.new subdomain: params[:subdomain], 
-    #                    apikey: params[:apikey]
-
     payload = JSON.parse params[:payload]
     payload["commits"].each do |commit|
       ca.author = commit["author"]["name"]

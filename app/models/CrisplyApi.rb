@@ -1,3 +1,15 @@
+########################################################################
+##
+##  Alejandro Ciniglio
+##  
+##  This class is best used by dynamically creating a subclass and
+##  then creating an instance of that. This is a limitation of 
+##  HTTParty, where if you need multiple subdomains, you need to
+##  create a new class for each.
+##
+########################################################################
+
+
 require 'builder'
 require 'httparty'
 require 'time'
@@ -19,8 +31,13 @@ class CrisplyApi
     # httparty init 
     # This is a problem because it's using a class
     # variable to store the subdomain, leading to
-    # overwriting the subdomain when changing. Maybe solve later with 
-    # Metaprogramming
+    # overwriting the subdomain when changing.
+    # This is solvable by subclassing this and using an
+    # instance of the subclass
+    # e.g. myCA = Class.new(CrisplyApi)
+    #      ca = myCA.new subdomain: "AwesomeCo"
+    #      # add data to ca...q
+    #      ca.post_activity
     self.class.base_uri "https://#{@subdomain}.crisply.com/api"
     self.class.basic_auth @apikey, '' 
   end

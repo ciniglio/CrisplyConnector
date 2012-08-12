@@ -10,14 +10,13 @@ class PivotalController < ApplicationController
     puts params[:activity]
     puts "C LOG"
 
-    # payload = JSON.parse params[:payload]
-    # payload["commits"].each do |commit|
-    #   ca.author = commit["author"]["name"]
-    #   ca.guid = commit["id"]
-    #   ca.text = commit["message"]
-    #   ca.date = commit["timestamp"]
-    #   ca.post_activity
-    # end
+    activity = params[:activity]
+    ca.author = activity[:author]
+    ca.guid = activity[:id]
+    ca.text = activity[:description]
+    ca.date = activity[:occured_at]
+    ca.post_activity
+    
     
     render nothing: true, status: 200
     

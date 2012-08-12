@@ -21,7 +21,7 @@ class CrisplyApi
   attr_reader :date
   
   def date=(date)
-    @date = Time.parse(date.to_s).utc.iso8601 unless date.nil?
+    @date = Time.parse(date.to_s).iso8601 unless date.nil?
   end
 
   def initialize(options)
@@ -73,6 +73,8 @@ class CrisplyApi
   end
   
   def set_date_to_now
+    # Seems reasonable to make this UTC time, and allow crisply to use
+    # the user's default time zone
     @date = Time.now.utc.iso8601
   end
 

@@ -14,7 +14,7 @@ class PivotalController < ApplicationController
     ca.author = activity[:author]
     ca.guid = activity[:id]
     ca.text = activity[:description]
-    ca.date = activity[:occured_at]
+    ca.date = activity[:occurred_at]
     ca.post_activity
     
     

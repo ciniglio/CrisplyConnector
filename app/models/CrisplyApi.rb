@@ -21,7 +21,7 @@ class CrisplyApi
   attr_reader :date
   
   def date=(date)
-    @date = Time.parse(date.to_s).utc.iso8601
+    @date = Time.parse(date.to_s).utc.iso8601 unless date.nil?
   end
 
   def initialize(options)
@@ -47,6 +47,8 @@ class CrisplyApi
     raise CrisplyApiException, "Missing Guid" if @guid.nil?
     raise CrisplyApiException, "Missing Text" if @text.nil?
     
+    set_date_to_now if @date.nil?
+
     puts self.class.post("/activity_items.xml",
                     :headers => { "Content-Type" => "application/xml",
                                   "Accept" => "application/xml"},
@@ -70,6 +72,10 @@ class CrisplyApi
     self.class.base_uri
   end
   
+  def set_date_to_now
+    @date = Time.now.utc.iso8601
+  end
+
 end
 
 class CrisplyApiException < Exception

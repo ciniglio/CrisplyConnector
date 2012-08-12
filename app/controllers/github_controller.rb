@@ -1,7 +1,11 @@
 class GithubController < ApplicationController
   def post
-    ca = CrisplyApi.new subdomain: params[:subdomain], 
-                        apikey: params[:apikey]
+    myCA = Class.new(CrisplyApi)
+    ca = myCA.new subdomain: params[:subdomain],
+                             apikey: params[:apikey]
+
+    #ca = CrisplyApi.new subdomain: params[:subdomain], 
+    #                    apikey: params[:apikey]
 
     payload = JSON.parse params[:payload]
     payload["commits"].each do |commit|

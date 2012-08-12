@@ -48,6 +48,10 @@ class CrisplyApi
 
     xml.target!
   end
+
+  def base_url
+    self.class.base_uri
+  end
   
 end
 

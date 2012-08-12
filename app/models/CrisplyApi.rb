@@ -49,6 +49,10 @@ class CrisplyApi
     
     set_date_to_now if @date.nil?
 
+    puts "________CRISPLY______"
+    puts create_activity_xml
+    puts "________CRISPLY______"
+
     puts self.class.post("/activity_items.xml",
                     :headers => { "Content-Type" => "application/xml",
                                   "Accept" => "application/xml"},

@@ -23,6 +23,7 @@ class CrisplyApi
   def date=(date)
     puts "Date --- #{date}"
     @date = Time.parse(date.to_s).iso8601 unless date.nil?
+    puts "@Date -- #{@date}"
   end
 
   def initialize(options)
